@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(ros_tutorials_service)
 
-find_package(catkin REQUIRED COMPONENTS message_generation std_msgs roscpp)
+find_package(catkin REQUIRED COMPONENTS message_generation std_msgs roscpp rospy)
 
 add_service_files(FILES SrvTutorial.srv)
 generate_messages(DEPENDENCIES std_msgs)
@@ -11,7 +11,7 @@ catkin_package(
   CATKIN_DEPENDS std_msgs roscpp
 )
 
-include_directories(${catkin_INCLUDE_DIRS})
+include_directories(${catkin_INCLUDE_DIRS})  
 
 add_executable(service_server src/service_server.cpp)
 add_dependencies(service_server ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
